@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Elevator Admin interface</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+<h2> Elevator Status</h2>
+<table>
+    <tr>
+        <th>ElevatorId</th>
+        <th>Floor</th>
+    </tr>
+    <tr th:each="elevator : ${elevators.entrySet()}">
+        <td th:text="${elevator.getKey()}">
+            id
+        </td>
+        <td th:text="${elevator.getValue().getCurrentFloor()}">
+            floor
+        </td>
+    </tr>
+</table>
+
+<h2>Elevator Admin Log</h2>
+<table>
+    <tr>
+        <th>ElevatorId</th>
+        <th>Message</th>
+        <th>Command</th>
+    </tr>
+    <tr th:each="message : ${log}">
+        <td th:text="${message.getElevatorId()}">
+            id
+        </td>
+        <td th:text="${message.getMessage()}">
+            message
+        </td>
+        <td th:text="${message.getCommand()}">
+            command
+        </td>
+    </tr>
+</table>
+</body>
+</html>
